@@ -1,0 +1,129 @@
+.base-container{
+    
+    width : 100%;
+    display : flex;
+    border: 5px;
+    border-radius: 5px;
+    flex-direction : column;
+    align-items: center;
+    
+  .header
+   {
+      
+      font-size : 30px;
+      margin-top: 5px;
+      border: 5px;
+      border-radius: 5px;
+      border-bottom: 5px;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    } 
+  .content {
+      display : flex;
+      flex-direction : column;
+  }
+
+  .btn {
+    font-size: 21px;
+    padding: 5px 20px;
+    border: 0;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 3px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    &:hover {
+      background-color: #15cdfc;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  
+  .image{
+      width : 25em;
+  img{
+    width :100%;
+    height : 100%
+    }
+  }
+      
+  .form {
+    margin-top: 2em;
+    border: 4px;
+    display: flex;
+    flex-direction : column;
+    align-items: center;
+    width : fit-content;
+    height : fit-content;
+  }
+  
+  .form-group
+  {
+    display: flex;
+    border: 4px;
+    flex-direction: column;
+    align-items: flex-start;
+    width : fit-content;
+    label {
+        font-size: 20px;
+    }
+
+    .contact-image{
+      width : 10px;
+      height : 10px;    
+  }
+    
+    input {
+      margin-top : 4px;
+      min-width: 18em;
+      height: 37px;
+      padding: 0px 10px;
+      font-size : 14px;
+      background-color: #f3f3f3;
+      border: 0;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      transition: all 250ms ease-in-out;  
+      &:focus{
+          outline: none;
+          box-shadow: 0px 0px 12px 0.8px #15cdfc
+      }    
+    }
+  }
+  .footer{
+    margin-top: 1em;
+    margin-bottom: 3em;
+    border-bottom: 5em;
+    border: 5em;
+  }
+ }
+
+ textarea {
+  margin-top : 6px;
+  min-width: 18em;
+  height: 10em;
+  padding: 0px 10px;
+  font-size : 14px;
+  background-color: #f3f3f3;
+  border: 0;
+  border-radius: 4px;
+  margin-bottom: 31px;
+  transition: all 250ms ease-in-out;  
+  &:focus{
+      outline: none;
+      box-shadow: 0px 0px 12px 0.8px #0e81ce96
+  }    
+}
+input.error {
+  border: 1px solid red;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 0.75em;
+  display: absolute;
+}
