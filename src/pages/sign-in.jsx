@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Logo from "../assets/images/login-logo.png"
 import "./styles.scss";
 import {NavLink, RegButton} from "./pageStyles"
+import {db_url} from "../App"
+import Axios from 'axios'
 
 const formValid = ({ formErrors, ...rest }) => {
     let valid = true;
@@ -21,6 +23,7 @@ const formValid = ({ formErrors, ...rest }) => {
 class SignIn extends Component {
     constructor(props){
         super(props);
+        
 
 
         this.state = {
@@ -33,23 +36,55 @@ class SignIn extends Component {
         };
     }
 
+
     handleSubmit = e => {
-        console.log("entered sign-in")
+        console.log("prop auth value :",this.props.Auth)
 
         e.preventDefault();
 
         if(formValid(this.state)){
-            console.log(`
-                ---SUBMITTING---
-                username: ${this.state.username}
-                password: ${this.state.password}
-            `)
-            alert("We are currently working on. Please wait for further updates..")
+            // console.log(`
+            //     ---SUBMITTING---
+            //     username: ${this.state.username}
+            //     password: ${this.state.password}
+            // `)
+            //alert("We are currently working on. Please wait for further updates..")
+            const req_url = db_url+'/api/userPassword'
+            //console.log("username state is :",this.state.username);
+            Axios.post(req_url,{
+                    u_name: this.state.username
+                }).then((res) => {
+                    //console.log("res is:",res)
+                    //console.log("res data is:",res.data.result.length)
+                    if(res.data.data === "Success")
+                    {
+                        if(res.data.result.length == 0)
+                        {
+                            alert("Username does not exist please try again!");
+                        }
+                        else{
+                            if(this.state.password === res.data.result[0].password)
+                            {
+                                this.props.setAuth();
+                                console.log("prop now is:", this.props.Auth)
+                                this.props.history.push('/home');
+                            }
+                            else{
+                                alert("Password id incorrect please try again!");
+                            }
+                        }
+                    }
+                    else{
+                        alert("Error while trying to login:"+res.data.error);
+                    }
+                    
+                    
+                })
         }
         else
         {
             alert("Either username or password is empty or incorrect. Please Check..")
-            console.error('FORM INVALID -- DISPLAY ERROR MESSAGE');
+            //console.error('FORM INVALID -- DISPLAY ERROR MESSAGE');
         }
     };
 

@@ -3,6 +3,7 @@ import {HomeDiv,HomeContainer,HomeWrapper,HomeItems, AlbumCard, AlbumCardWrap, A
 import CardItem from "../../components/cards/cardItems";
 import AlbumSlide from "./albumSlide"
 import {PopularItems, RecentItems, ElectronicItems} from "./albumData"
+import { useHistory } from "react-router";
 //import { Text } from 'react-native';
 //import { useFocusEffect  } from '@react-navigation/native'
 
@@ -17,6 +18,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 export default function Home() {
+    //console.log("user from nav:",this.props.location.state.user)
+    let history = useHistory();
 
     const breakPoints = [
         { width: 1, pagination: false, itemsToShow: 1, itemsToScroll: 1},
@@ -55,6 +58,8 @@ export default function Home() {
 
 
     const addToCart = (data) => {
+        console.log("add to cart triggered:",data)
+        console.log("cart is",cart)
         const tempcart1 = [...cart];
         const exist = tempcart1.filter((x) => x.data === data);
         if(exist.length > 0)
@@ -74,6 +79,7 @@ export default function Home() {
 
 
     const removeFromCart = (data) => {
+        console.log("remove from cart triggered:",data)
         const tempcart = [...cart];
         const exist = tempcart.findIndex((x) => x.data === data);
         if (exist !== -1) {
@@ -101,6 +107,24 @@ export default function Home() {
             cart[i].data.quantity = 0; 
         }
         setCart([]);
+    }
+
+    const checkoutCart = () => {
+        console.log("Checkout cart");
+    //     const history = useHistory();
+    //     history.push({
+    //         pathname:  "/checkout",
+    //      });
+    //    // history.push
+       //this.props.history.push('/checkout')
+       history.push({
+        pathname: '/checkout',
+        cart: cart,
+        cartLen: cartLen,
+        cartLenUpdate:cartLenUpdate,
+        addToCart:addToCart,
+        removeFromCart:removeFromCart,
+       });
     }
 
 
@@ -173,8 +197,10 @@ const RecentItemReset = () => {
         <HomeDiv name="albumsSection">
             <HomeContainer>
                 <CartWrap>
+                    
                     <CartText>Cart: {cartLen} </CartText>
                     <CartButton onClick = {() => clearCart()}>Clear Cart</CartButton>
+                    {/* <CartButton onClick = {() => checkoutCart()}>Checkout Cart</CartButton> */}
                 </CartWrap>
                 
                 <GenresText>New Popular</GenresText>

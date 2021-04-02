@@ -1,0 +1,19 @@
+
+
+button.rec-arrow{
+    background-color: rgb(35, 158, 154);
+    width: 1px;
+    box-shadow: 0 0 0px 0px rgba(35, 158, 154);
+}
+  
+button.rec-arrow:hover:enabled, button.rec-arrow:active , button.rec-arrow:focus:enabled  {
+    color: #33312f;
+    background-color: rgb(35, 158, 154);
+    box-shadow: 0 0 1px 3px rgba(35, 158, 154);
+}
+
+
+button.rec-arrow:disabled{
+    color: #666564;
+}
+

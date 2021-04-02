@@ -1,7 +1,7 @@
 import React from "react";
 import { CloseIcon, Icon, MobileNavbarContainer,MobilebarWrapper, MobilebarMenu,MobilebarLink,MobileBtnWrap,MobilebarRoute } from "./MobileNavbarElements";
 
-const MobileNavbar = ({isOpen, toggle}) => {
+const MobileNavbar = ({isOpen, toggle, Auth, setAuth}) => {
     return (
         <MobileNavbarContainer isOpen={isOpen} onClick={toggle}>
             <Icon onClick={toggle}>
@@ -20,7 +20,11 @@ const MobileNavbar = ({isOpen, toggle}) => {
                     </MobilebarLink>
                 </MobilebarMenu>
                 <MobileBtnWrap>
-                    <MobilebarRoute to="/sign-in">Sign-In</MobilebarRoute>
+                    {Auth
+                    ?<MobilebarRoute to="/" onClick={setAuth}>Sign-out</MobilebarRoute>
+                    :<MobilebarRoute to="/sign-in">Sign-In</MobilebarRoute>
+                    }
+                    
                 </MobileBtnWrap>
             </MobilebarWrapper>
         </MobileNavbarContainer>

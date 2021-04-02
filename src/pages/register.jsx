@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
+import { useHistory } from 'react-router-dom';
 import "./styles.scss";
 import {NavLink, RegButton} from "./pageStyles"
+import Axios from 'axios'
+import {db_url} from "../App"
+
+
+
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -24,8 +30,6 @@ const emailRegex = RegExp(
 class Register extends Component {
     constructor(props){
         super(props);
-
-
         this.state = {
             Name: null,
             Mobile: null,
@@ -41,28 +45,52 @@ class Register extends Component {
             }
 
         };
+        //console.log("props here:",props)
     }
 
     handleSubmit = e => {
+        
         console.log("entered--------")
 
         e.preventDefault();
 
         if(formValid(this.state)){
-            console.log(`
-                -- SUBMITTING--
-                Name: ${this.state.Name}
-                Mobile: ${this.state.Mobile}
-                mail: ${this.state.Email}
-                password: $(this.state.Password)
-                Age: ${this.state.Age}
-            `) 
-            alert("Successfully Registered. Wait for login updates..")
+            // console.log(`
+            //     -- SUBMITTING--
+            //     Name: ${this.state.Name}
+            //     Mobile: ${this.state.Mobile}
+            //     mail: ${this.state.Email}
+            //     password: $(this.state.Password)
+            //     Age: ${this.state.Age}
+            // `) 
+            //alert("Successfully Registered. Wait for login updates..")
+            const req_url = db_url+'/api/insertUserData'
+
+            Axios.post(req_url,{
+                u_name: this.state.Name,
+                u_mobile: parseInt(this.state.Mobile,10),
+                u_email: this.state.Email,
+                u_password: this.state.Password,
+                u_age: parseInt(this.state.Age,10) 
+            }).then((res) => {
+                // console.log("res is:",res)
+                // console.log("res data is:",res.data.error)
+                if(res.data.data === "Inserted")
+                {
+                    alert("Registration Successful");
+                    this.props.history.push('/sign-in');
+                }
+                else{
+                    alert("Error while Registering is:"+res.data.error);
+                }
+                
+                
+            })
         }
         else 
         {
             alert("Some fields are missing or incorrect. Please check..")
-            console.error('FORM INVALID -- DISPLAY ERROR MESSAGE');
+            // console.log('FORM INVALID -- DISPLAY ERROR MESSAGE');
         }
     };
 
@@ -134,7 +162,7 @@ class Register extends Component {
                         placeholder="xxx-xxx-xxxx"
                         noValidate
                         onChange = {this.handleChange} />
-                    {formErrors.Name.length > 0 && (
+                    {formErrors.Mobile.length > 0 && (
                     <small><span className = "errorMessage">{formErrors.Mobile}</span></small>
                 )}
                 </div>
@@ -147,7 +175,7 @@ class Register extends Component {
                         placeholder="xxxx@xxxx.com"
                         noValidate
                         onChange = {this.handleChange} />
-                    {formErrors.Name.length > 0 && (
+                    {formErrors.Email.length > 0 && (
                     <small><span className = "errorMessage">{formErrors.Email}</span></small>
                 )}
                 <div className = "form-group">
@@ -172,7 +200,7 @@ class Register extends Component {
                         noValidate
                         onChange = {this.handleChange} />
                 </div>
-                {formErrors.Name.length > 0 && (
+                {formErrors.Age.length > 0 && (
                 <small><span className = "errorMessage">{formErrors.Age}</span></small>
                 )}
             </div>
