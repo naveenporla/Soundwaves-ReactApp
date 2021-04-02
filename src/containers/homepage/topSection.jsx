@@ -51,7 +51,7 @@ export function TopSection(props)
     let history = useHistory();
 
     const redirect = val => () => {
-        console.log(val);
+        // console.log(val);
         if(val == "sign-in")
         {
             history.push('/sign-in')

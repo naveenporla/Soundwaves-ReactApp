@@ -41,24 +41,24 @@ class ContactUs extends Component {
     }
 
     handleSubmit = e => {
-        console.log("entered--------")
+        // console.log("entered--------")
 
         e.preventDefault();
 
         if(formValid(this.state)){
-            console.log(`
-                -- SUBMITTING--
-                Name: ${this.state.Name}
-                Mobile: ${this.state.Mobile}
-                mail: ${this.state.Email}
-                Query: ${this.state.Query}
-            `)  
+            // console.log(`
+            //     -- SUBMITTING--
+            //     Name: ${this.state.Name}
+            //     Mobile: ${this.state.Mobile}
+            //     mail: ${this.state.Email}
+            //     Query: ${this.state.Query}
+            // `)  
             alert("Thank you for submitting your query. We will get back to you ASAP..") 
         }
         else 
         {
             alert("Some fields are missing or incorrect. Please check..")
-            console.error('FORM INVALID -- DISPLAY ERROR MESSAGE');
+            // console.error('FORM INVALID -- DISPLAY ERROR MESSAGE');
         }
     };
 
@@ -92,7 +92,7 @@ class ContactUs extends Component {
                 break;
         }
 
-        this.setState({formErrors,[name]:value}, () => console.log(this.state))
+        this.setState({formErrors,[name]:value}, () => {})
 
     }
 

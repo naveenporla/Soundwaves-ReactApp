@@ -38,7 +38,7 @@ class SignIn extends Component {
 
 
     handleSubmit = e => {
-        console.log("prop auth value :",this.props.Auth)
+        // console.log("prop auth value :",this.props.Auth)
 
         e.preventDefault();
 
@@ -66,7 +66,7 @@ class SignIn extends Component {
                             if(this.state.password === res.data.result[0].password)
                             {
                                 this.props.setAuth();
-                                console.log("prop now is:", this.props.Auth)
+                                // console.log("prop now is:", this.props.Auth)
                                 this.props.history.push('/home');
                             }
                             else{
@@ -89,7 +89,7 @@ class SignIn extends Component {
     };
 
     handleChange = e => {
-        console.log("entered change signIn")
+        // console.log("entered change signIn")
 
         e.preventDefault();
 
@@ -112,7 +112,7 @@ class SignIn extends Component {
                 break;
         }
 
-        this.setState({formErrors,[name]:value}, () => console.log(this.state))
+        this.setState({formErrors,[name]:value}, () => {})
 
     }
 

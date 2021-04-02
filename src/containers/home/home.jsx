@@ -58,8 +58,8 @@ export default function Home() {
 
 
     const addToCart = (data) => {
-        console.log("add to cart triggered:",data)
-        console.log("cart is",cart)
+        // console.log("add to cart triggered:",data)
+        // console.log("cart is",cart)
         const tempcart1 = [...cart];
         const exist = tempcart1.filter((x) => x.data === data);
         if(exist.length > 0)
@@ -79,7 +79,7 @@ export default function Home() {
 
 
     const removeFromCart = (data) => {
-        console.log("remove from cart triggered:",data)
+        // console.log("remove from cart triggered:",data)
         const tempcart = [...cart];
         const exist = tempcart.findIndex((x) => x.data === data);
         if (exist !== -1) {
@@ -110,7 +110,7 @@ export default function Home() {
     }
 
     const checkoutCart = () => {
-        console.log("Checkout cart");
+        // console.log("Checkout cart");
     //     const history = useHistory();
     //     history.push({
     //         pathname:  "/checkout",
@@ -174,7 +174,7 @@ const RecentItemReset = () => {
 
 
     useEffect(() => {
-        console.log("triggered")
+        // console.log("triggered")
         clearCart();
         //PopularItemReset();
     },[])
