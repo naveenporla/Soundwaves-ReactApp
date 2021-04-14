@@ -5,6 +5,7 @@ import {theme} from "../../themeColor"
 
 export const HomeDiv = styled.div`
     padding: 4rem;
+    padding-top: 7rem;
     background: ${theme.grey};
 `;
 
@@ -60,6 +61,18 @@ export const CartText = styled.div`
     font-weight: bold;
     font-size: 25px;
     margin-left: 10.5vw;
+    margin-right: 2vw;
+    line-height: 25px;
+`;
+
+export const CartText2 = styled.div`
+    color: ${theme.primary};
+    text-align: center;
+    font-weight: ;
+    font-size: 25px;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    margin-left: 35vw;
     margin-right: 2vw;
     line-height: 25px;
 `;

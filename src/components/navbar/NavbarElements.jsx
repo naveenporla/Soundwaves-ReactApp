@@ -38,7 +38,7 @@ export const NavLink = styled(Link)`
 `;
 
 export const NavLink2 = styled(Link)`
-    background-color: #171621; 
+    //background-color: #171621; 
     color: #fff;
     display: flex;
     align-items: center;
@@ -49,6 +49,28 @@ export const NavLink2 = styled(Link)`
 
     &.active {
         color: #15cdfc;
+        // border-bottom: 3px solid ${theme.primary}
+    }
+
+`;
+
+
+export const NavLink3 = styled(Link)`
+color: #fff;
+display: flex;
+align-items: center;
+text-decoration: none;
+padding: 0 1rem;
+height: 100%;
+cusrsor: pointer;
+
+    // &.active {
+    //     color: ${theme.primary};
+    //     // border-bottom: 3px solid ${theme.primary}
+    // }
+
+    &:hover {
+        color: ${theme.primary};
         // border-bottom: 3px solid ${theme.primary}
     }
 
@@ -128,6 +150,7 @@ margin-left: 0px;
 
 
 
+
 function Dropdown({clearCart,cartCount,items, multiSelect = false}) {
     const [open, setOpen] = useState(false);
     const toggle = () => setOpen(!open);
@@ -149,17 +172,17 @@ function Dropdown({clearCart,cartCount,items, multiSelect = false}) {
                 onKeyPress = {()=>toggle(!open)}
                 onClick = {()=>toggle(!open)}>
                     <div className = "dd-header-title">
-                        <p className = "dd-header-title">Cart : {cartCount}</p>
+                        <p className = "dd-header-title">Cart : {cartCount}<span className="caret-down"></span></p>
                     </div>
                 </div>
                 {open  && (
                    <ul className = "dd-list">
                        
                        <li className = "dd-list-item" key = "Item2">
-                           <button onClick={() => {clearCart()}} type="button">Clear Cart</button>
+                           <button onClick={() => {clearCart();toggle(!open)}} type="button">Clear Cart</button>
                        </li>
                        <li className = "dd-list-item" key = "Item2">
-                           <button onClick = {() => checkoutCart()} type="button">Checkout Cart</button>
+                           <button onClick = {() => {checkoutCart();toggle(!open)}} type="button">Checkout Cart</button>
                        </li>
                    </ul> )} 
             </div>

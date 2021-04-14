@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 const shopReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case actionTypes.ADD_TO_CART:
-            console.log("addtocart",state.products.length );
+            //console.log("addtocart",state.products.length );
             var item = []
             for(var i=0; i<state.products.length; i++)
             {
@@ -24,7 +24,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
             }
             //state.products.length
             //const item = state.products.forEach(element => element.find(prod => prod.id === action.payload.id))
-            console.log("item in reducer products:",item);
+            //console.log("item in reducer products:",item);
             //const item = {test:"test"}
             const inCart =  state.cart.find(item => item.id === action.payload.id ? true : false);
             return {
@@ -37,7 +37,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
                 : [...state.cart,{...item, quantity: 1}],
             };
         case actionTypes.REMOVE_FROM_CART:
-            console.log("remove from cart triggered:",state.cart)
+            //console.log("remove from cart triggered:",state.cart)
             const tempcart = [...state.cart];
             const exist = tempcart.findIndex((x) => x.id === action.payload.id );
 
@@ -56,7 +56,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
                 
                 // setCart(tempcart);
                 // cartLenUpdate();
-                console.log("tempcartremovecart",tempcart)
+                //console.log("tempcartremovecart",tempcart)
             }
             return{
                 ...state,
@@ -74,7 +74,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
                 currentItem: action.payload,
             }
         case actionTypes.CLEAR_CART:
-            console.log("clearcarttt")
+            //console.log("clearcarttt")
             
             return{
                 ...state,
@@ -82,7 +82,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
                 cart:[],
             }
         default:
-            console.log("log",action.type)
+            //console.log("log",action.type)
             return state;
     }
 

@@ -83,8 +83,6 @@ class Register extends Component {
                 else{
                     alert("Error while Registering is:"+res.data.error);
                 }
-                
-                
             })
         }
         else 

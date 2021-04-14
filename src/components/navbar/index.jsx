@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import styled from "styled-components";
-import {Nav, NavLink,NavLink2, Bars, NavMenu, NavBtn, NavBtnLink, LogoImg} from "./NavbarElements";
+import {Nav, NavLink,NavLink2,NavLink3, Bars, NavMenu, NavBtn, NavBtnLink, LogoImg} from "./NavbarElements";
 import SoundwavesLogo from "../../assets/images/logo9.png"
 import { Button } from "../button";
 import {connect} from 'react-redux'
@@ -46,6 +46,9 @@ const Navbar = ({toggle, Auth, setAuth,cart}) => {
                 <Bars onClick={toggle}/>
                 <NavMenu>
                     {/* <NavLink to="/home" activeStyle={{}}> */}
+                    <NavLink3 to="/" activeStyle={{}}>
+                        Home
+                    </NavLink3>
                     <NavLink to="/home" activeStyle={{}}>
                         Store
                     </NavLink>
@@ -57,9 +60,9 @@ const Navbar = ({toggle, Auth, setAuth,cart}) => {
                     </NavLink>
                     
                     <Dropdown cartCount={cartCount}></Dropdown>
-                    <NavLink to="/" activeStyle={{}}>
+                    {/* <NavLink to="/" activeStyle={{}}>
                         Cart : {cartCount}
-                    </NavLink>
+                    </NavLink> */}
                     {Auth
                     ?<NavBtnLink to='/' onClick={Testlogout} activeStyle={{}} >Logout</NavBtnLink> 
                     :<NavBtnLink to='/sign-in' activeStyle={{}} >Login</NavBtnLink>

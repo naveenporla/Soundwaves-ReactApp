@@ -1,6 +1,6 @@
 import React , {useState,useEffect, Component } from "react";
 import { useLocation } from "react-router-dom";
-import {HomeDiv,HomeContainer,HomeWrapper,HomeItems,CartWrap,CartText,GenresText} from "./checkoutElements"
+import {HomeDiv,HomeContainer,HomeWrapper,HomeItems,CartWrap,CartText,CartText2,GenresText} from "./checkoutElements"
 import AlbumSlide from "../../containers/home/albumSlide"
 import Carousel from 'react-elastic-carousel';
 import "slick-carousel/slick/slick.css";
@@ -11,7 +11,7 @@ import { Logo } from "../logo";
 import {connect} from 'react-redux'
 
 function Checkout({ cart }){
-    console.log("cartincheckout",cart)
+    //console.log("cartincheckout",cart)
     // var cart = []
 
     // var cartLen = 0;
@@ -111,19 +111,19 @@ function Checkout({ cart }){
         // if(cart.length != 0)
         // {
             const tempcar1 = [...cart]
-            console.log("triggered tempcar1",tempcar1);
+            //console.log("triggered tempcar1",tempcar1);
             var restemp1 = tempcar1.reduce((acc,curr, i) => {
-                console.log("acc",acc)
-                console.log("i is,",i);
+                //console.log("acc",acc)
+                //console.log("i is,",i);
                 if ( !(i % size)  ) {    // if index is 0 or can be divided by the `size`...
                   acc.push(tempcar1.slice(i, i + size));   // ..push a chunk of the original array to the accumulator
                 }
-                console.log("acc log:",acc);
+                //console.log("acc log:",acc);
                 return acc;
               },[]);
             
             setRes(restemp1);
-            console.log("res 2 is:",restemp1);
+            //console.log("res 2 is:",restemp1);
         //}
         
     }
@@ -138,7 +138,7 @@ function Checkout({ cart }){
         //cartLenUpdate();
     },[cart]);
 
-    console.log("render res is:",res);
+    //console.log("render res is:",res);
 
     return (
         <HomeDiv name="checkoutSection">
@@ -164,7 +164,7 @@ function Checkout({ cart }){
             :
             <HomeWrapper>
                 <HomeItems>
-                    <CartText>Cart is Empty</CartText>
+                    <CartText2>Cart is Empty</CartText2>
                 </HomeItems>
             </HomeWrapper>
         }
