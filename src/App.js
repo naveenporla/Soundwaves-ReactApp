@@ -13,8 +13,8 @@ import FooterBar from "./components/footer/footer"
 import Register from './pages/register';
 import Checkout from "./components/checkout/checkout"
 
-export const db_url = "http://localhost:3001"
-// export const db_url = "https://soundwaves-db.herokuapp.com"
+//export const db_url = "http://localhost:3001"
+export const db_url = "https://soundwaves-db.herokuapp.com"
 
 function App() {
   const [isOpen,setIsOpen] = useState(false)
