@@ -5,10 +5,13 @@ import {useState} from "react";
 import { Button } from "../../components/button";
 //import cart,{setCart} from "./home";
 import items from "./home" 
+import {connect} from "react-redux";
+import { addToCart, removeFromCart } from '../../redux/Shopping/shopping-actions';
 
-function AlbumSlide(props) 
+
+function AlbumSlide({item,addToCart,removeFromCart}) 
 {
-    const {cart, addToCart,removeFromCart} = props;
+    //const {cart,removeFromCart} = props;
     
     // const [cart,setCart] = useState([]);
 
@@ -29,21 +32,21 @@ function AlbumSlide(props)
         <AlbumCard>
             <AlbumCardWrap>
                 <AlbumPicWrap>
-                    <AlbumImg src={props.src} alt="Album Image"></AlbumImg>
+                    <AlbumImg src={item.src} alt="Album Image"></AlbumImg>
                 </AlbumPicWrap>
                 <AlbumInfo>
-                    <AlbumText>{props.text}</AlbumText>
+                    <AlbumText>{item.text}</AlbumText>
                     
                 </AlbumInfo>
                 <AlbumInfo>
-                    <AlbumCost>{props.cost} </AlbumCost>
+                    <AlbumCost>{item.cost} </AlbumCost>
                 </AlbumInfo>
                 {/* <Button onClick= {() => addToCart(props.indx)} className="add">Add</Button>
                 <Button onClick = {() => removeFromCart(props.indx)} className="remove">Delete</Button> */}
                 <AlbumQuantWrap>
-                    <Button onClick= {() => addToCart(props.item)} className="add">Add</Button>
-                    <AlbumQuantity>{props.quantity}</AlbumQuantity>
-                    <Button onClick = {() => removeFromCart(props.item)} className="remove">Delete</Button>
+                    <Button onClick={() => addToCart(item.id)} className="add">Add</Button>
+                    <AlbumQuantity>{item.quantity}</AlbumQuantity>
+                    <Button onClick = {() => removeFromCart(item.id)} className="remove">Delete</Button>
                     
                 </AlbumQuantWrap>
 
@@ -55,4 +58,12 @@ function AlbumSlide(props)
     )
 }
 
-export default AlbumSlide;
+const mapDispatchToProps = dispatch => {
+    return{
+        addToCart: (id) => dispatch(addToCart(id)),
+        removeFromCart: (id) => dispatch(removeFromCart(id))
+    }
+}
+
+
+export default connect(null,mapDispatchToProps)(AlbumSlide) ;

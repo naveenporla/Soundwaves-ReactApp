@@ -10,9 +10,10 @@ import { Element,scroller } from "react-scroll";
 import Plans from "../../components/plans/Plans";
 import { useHistory } from 'react-router-dom';
 
+//calc(100vh - 65px);
 const TopContainer = styled.div`
     width:100%;
-    height: calc(100vh - 65px);
+    height: calc(100vh - 0px);
     padding:0;
     background-image: url(${BackgroundImg});
     position: relative;

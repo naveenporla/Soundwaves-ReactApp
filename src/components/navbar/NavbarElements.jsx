@@ -2,10 +2,17 @@ import styled from "styled-components";
 import {NavLink as Link} from "react-router-dom"
 import {FaBars} from "react-icons/fa"
 import {theme} from "../../themeColor"
+import {useState} from 'react'
+import "./navbar.scss";
+import {connect} from 'react-redux'
+import { clearCart } from '../../redux/Shopping/shopping-actions';
+import { useHistory } from "react-router";
 
 export const Nav = styled.nav`
     background: ${theme.secondary};
+    position: fixed;
     height: 65px;
+    width:100%;
     display: flex;
     justify-content: space-evenly;
     padding:  ;
@@ -31,6 +38,7 @@ export const NavLink = styled(Link)`
 `;
 
 export const NavLink2 = styled(Link)`
+    background-color: #171621; 
     color: #fff;
     display: flex;
     align-items: center;
@@ -67,7 +75,7 @@ export const NavMenu = styled.div`
     align-items: center;
     margin-right: 24px;
 
-    width:100vw;
+    width:86vw;
     white-space: nowrap;
 
 
@@ -120,3 +128,48 @@ margin-left: 0px;
 
 
 
+function Dropdown({clearCart,cartCount,items, multiSelect = false}) {
+    const [open, setOpen] = useState(false);
+    const toggle = () => setOpen(!open);
+
+    let history = useHistory();
+
+    const checkoutCart = () => {
+       history.push({
+        pathname: '/checkout',
+       });
+    }
+    
+    function handleOnClick(item) {}
+        return (
+            <div className = "dd-wrapper">
+                <div 
+                className = "dd-header"
+                role = "button"
+                onKeyPress = {()=>toggle(!open)}
+                onClick = {()=>toggle(!open)}>
+                    <div className = "dd-header-title">
+                        <p className = "dd-header-title">Cart : {cartCount}</p>
+                    </div>
+                </div>
+                {open  && (
+                   <ul className = "dd-list">
+                       
+                       <li className = "dd-list-item" key = "Item2">
+                           <button onClick={() => {clearCart()}} type="button">Clear Cart</button>
+                       </li>
+                       <li className = "dd-list-item" key = "Item2">
+                           <button onClick = {() => checkoutCart()} type="button">Checkout Cart</button>
+                       </li>
+                   </ul> )} 
+            </div>
+        );
+}
+
+const mapDispatchToProps = dispatch => {
+    return{
+        clearCart: () => dispatch(clearCart()),
+    }
+}
+
+export default connect(null,mapDispatchToProps)(Dropdown) ;

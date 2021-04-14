@@ -2,11 +2,10 @@ import React , {useState,useEffect, Component } from "react";
 import {HomeDiv,HomeContainer,HomeWrapper,HomeItems, AlbumCard, AlbumCardWrap, AlbumPicWrap, AlbumImg, AlbumInfo, AlbumText,CartButton,GenresText,CartText,CartWrap} from "./homeElements"
 import CardItem from "../../components/cards/cardItems";
 import AlbumSlide from "./albumSlide"
-import {PopularItems, RecentItems, ElectronicItems} from "./albumData"
+import {PopularItems, RecentItems, ElectronicItems,GenereNames} from "./albumData"
 import { useHistory } from "react-router";
-//import { Text } from 'react-native';
-//import { useFocusEffect  } from '@react-navigation/native'
 
+import {connect} from 'react-redux'
 
 import Carousel from 'react-elastic-carousel';
 import "slick-carousel/slick/slick.css";
@@ -15,11 +14,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 
-
-
-export default function Home() {
+function Home({products}) {
     //console.log("user from nav:",this.props.location.state.user)
     let history = useHistory();
+    console.log("producst:",products)
 
     const breakPoints = [
         { width: 1, pagination: false, itemsToShow: 1, itemsToScroll: 1},
@@ -79,7 +77,7 @@ export default function Home() {
 
 
     const removeFromCart = (data) => {
-        // console.log("remove from cart triggered:",data)
+        console.log("remove from cart triggered:",data)
         const tempcart = [...cart];
         const exist = tempcart.findIndex((x) => x.data === data);
         if (exist !== -1) {
@@ -96,8 +94,8 @@ export default function Home() {
             
             setCart(tempcart);
             cartLenUpdate();
-            // console.log("temp cart at:",tempcart)
-          }
+            console.log("cart at:",cart)
+        }
     };
 
     const clearCart = () => {
@@ -196,14 +194,39 @@ const RecentItemReset = () => {
     return (
         <HomeDiv name="albumsSection">
             <HomeContainer>
-                <CartWrap>
-                    
-                    <CartText>Cart: {cartLen} </CartText>
+                {/* <CartWrap>
                     <CartButton onClick = {() => clearCart()}>Clear Cart</CartButton>
-                    {/* <CartButton onClick = {() => checkoutCart()}>Checkout Cart</CartButton> */}
-                </CartWrap>
+                    <CartText>Cart: {cartLen} </CartText>
+                    <CartButton onClick = {() => checkoutCart()}>Checkout Cart</CartButton>
+                </CartWrap> */}
+
+
                 
-                <GenresText>New Popular</GenresText>
+                {products.map((each,i) => (
+                    <>
+                    <GenresText>{GenereNames[i]}</GenresText>
+                    <HomeWrapper>
+                        <HomeItems>
+                            <Carousel breakPoints={breakPoints}>
+                                {each.map((item,idx) => (
+                                            <div className="Items" key={idx}>
+                                                <AlbumSlide src={item.src} text={item.text} cost={item.cost} item={item} myindex={idx} />
+                                            </div>
+                                ))}
+                            </Carousel>
+                        </HomeItems>
+                    </HomeWrapper>
+                    </>
+                ))}
+                
+
+
+
+
+
+
+                
+                {/* <GenresText>New Popular</GenresText>
                 <HomeWrapper>
                     <HomeItems>
                         <Carousel breakPoints={breakPoints}>
@@ -240,7 +263,7 @@ const RecentItemReset = () => {
                             ))}
                         </Carousel>
                     </HomeItems>
-                </HomeWrapper>
+                </HomeWrapper> */}
 
 
 
@@ -301,3 +324,12 @@ const RecentItemReset = () => {
     )
     
 }
+
+
+const mapStateToProps = state => {
+    return {
+        products: state.shop.products,
+    }
+}
+
+export default connect(mapStateToProps)(Home);

@@ -20,6 +20,9 @@ import {
   PricingCardFeature
 } from './PlansElements';
 
+
+
+
 function Plans() {
   return (
     <IconContext.Provider value={{ color: '#a9b3c1', size: 64 }}>

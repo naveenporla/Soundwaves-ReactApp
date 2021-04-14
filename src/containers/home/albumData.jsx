@@ -19,11 +19,11 @@ import imgHarderBetter from "../../assets/images/Albums/HarderBetter.jpg"
 import imgBreathe from "../../assets/images/Albums/Breathe.jfif"
 
 
-
-
+export const GenereNames = ["New Popular","Electronic", "Recents"]
 
 export const PopularItems = [
     {
+        id: 1,
         src: img1,
         cost: '$1.99',
         text: "After Hours : The Weeknd",
@@ -31,48 +31,56 @@ export const PopularItems = [
 
     },
     {
+        id: 2,
         src: img2,
         cost: '$0.99',
         text: "Kissland : The Weeknd",
         quantity:0
     },
     {
+        id: 3,
         src: img3,
         cost: '$1.99',
         text: "Sicko Mode : Travis Scott",
         quantity:0
     },
     {
+        id: 4,
         src: img4,
         cost: '$2.49',
         text: "Hybrid Theory : Linkin Park",
         quantity:0
     },
     {
+        id: 5,
         src: img5,
         cost: '$0.49',
         text: "For Sale : Tienas",
         quantity:0
     },
     {
+        id: 6,
         src: imgReasons,
         cost: '$0.99',
         text: "Reasons : Yung Fusion",
         quantity:0
     },
     {
+        id: 7,
         src: imgChameleonFlow,
         cost: '$0.99',
         text: "Chameleon Flow : Yung Mavu",
         quantity:0
     },
     {
+        id: 8,
         src: imgRegardless,
         cost: '$0.49',
         text: "Regardless : Anik Khan",
         quantity:0
     },
     {
+        id: 9,
         src: imglalala,
         cost: '$1.09',
         text: "Lalala : Y2K",
@@ -83,48 +91,56 @@ export const PopularItems = [
 
 export const RecentItems = [
     {
+        id: 10,
         src: imgCross,
         cost: '$1.99',
         text: "Cross : Daft Punk",
         quantity:0
     },
     {
+        id: 11,
         src: imgContact,
         cost: '$2.49',
         text: "Contact : Daft Punk",
         quantity:0
     },
     {
+        id: 12,
         src: imgReasons,
         cost: '$0.99',
         text: "Reasons : Yung Fusion",
         quantity:0
     },
     {
+        id: 13,
         src: imgChameleonFlow,
         cost: '$0.99',
         text: "Chameleon Flow : Yung Mavu",
         quantity:0
     },
     {
+        id: 14,
         src: img5,
         cost: '$0.49',
         text: "For Sale : Tienas",
         quantity:0
     },
     {
+        id: 15,
         src: img1,
         cost: '$1.99',
         text: "After Hours : The Weeknd",
         quantity:0
     },
     {
+        id: 16,
         src: img2,
         cost: '$0.99',
         text: "Kissland : The Weeknd",
         quantity:0
     },
     {
+        id: 17,
         src: imgTeardrop,
         cost: '$0.49',
         text: "Tear Drop : Massive Attack",
@@ -135,51 +151,62 @@ export const RecentItems = [
 
 export const ElectronicItems = [
     {
+        id: 18,
         src: imgGalvanize,
         cost: '$1.99',
         text: "Galvanize : Chemical Brothers",
         quantity:0
     },
     {
+        id: 19,
         src: imgParadiseCircus,
         cost: '$1.29',
         text: "Paradise Circus : Massive Attack",
         quantity:0
     },
     {
+        id: 20,
         src: imgCross,
         cost: '$1.99',
         text: "Cross : Daft Punk",
         quantity:0
     },
     {
+        id: 21,
         src: imgContact,
         cost: '$2.49',
         text: "Contact : Daft Punk",
         quantity:0
     },
     {
+        id: 22,
         src: imgTeardrop,
         cost: '$0.49',
         text: "Tear Drop : Massive Attack",
         quantity:0
     },
     {
+        id: 23,
         src: imgDoItAgain,
         cost: '$0.99',
         text: "Do It Again : Chemical Brothers",
         quantity:0
     },
     {
+        id: 24,
         src: imgHarderBetter,
         cost: '$0.99',
         text: "Discovery : Daft Punk",
         quantity:0
     },
     {
+        id: 25,
         src: imgBreathe,
         cost: '$0.49',
         text: "Breathe : The Prodigy",
         quantity:0
     },
 ];
+
+
+export const albumsData = [PopularItems,RecentItems,ElectronicItems]

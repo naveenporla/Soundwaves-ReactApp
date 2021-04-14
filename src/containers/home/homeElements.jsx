@@ -5,6 +5,7 @@ import {theme} from "../../themeColor"
 
 export const HomeDiv = styled.div`
     padding: 4rem;
+    padding-top: 7rem;
     background: ${theme.grey};
 `;
 
@@ -16,7 +17,7 @@ export const HomeContainer = styled.div`
     padding 0px;
     max-width: ;
     width: 95%;
-    margin: 0;
+    margin-top: 20;
 `;
   
 
